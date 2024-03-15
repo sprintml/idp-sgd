@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "opacus"
+version = "0.2.1"
+description = ""
+authors = [""]
+readme = "README.md"
+
+packages = [ {include = "opacus"}, ]
+
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.10"
+numpy = "^1.22.0"
+scipy = "^1.8.1"
+opt-einsum = "^3.3.0"
+ipykernel = "^6.15.1"
+torch = "^1.13.0"
+torchvision = "^0.14.0"
+
+
+
+[tool.poetry.group.dev.dependencies]
+
+pylint = "^2.14.4"
+PyYAML = "^6.0"
+toml = "^0.10.2"
+jupyter = "^1.0.0"
+yapf = "^0.32.0"
+black = "^22.6.0"
+bpython = "^0.22.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
