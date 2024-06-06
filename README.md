@@ -1,5 +1,9 @@
-# Individualized DP-SGD
-This is a research library exploring individualization in DP-SGD.
+# Have it your way: Individualized Privacy Assignment for DP-SGD
+
+This is a research library implementing the individualization in DP-SGD.
+
+## Abstract
+When training a machine learning model with differential privacy, one sets a privacy budget. This uniform budget represents an overall maximal privacy violation that any user is willing to face by contributing their data to the training set. We argue that this approach is limited because different users may have different privacy expectations. Thus, setting a uniform privacy budget across all points may be overly conservative for some users or, conversely, not sufficiently protective for others. In this paper, we capture these preferences through individualized privacy budgets. To demonstrate their practicality, we introduce a variant of Differentially Private Stochastic Gradient Descent (DP-SGD) which supports such individualized budgets. DP-SGD is the canonical approach to training models with differential privacy. We modify its data sampling and gradient noising mechanisms to arrive at our approach, which we call Individualized DP-SGD (IDP-SGD). Because IDP-SGD provides privacy guarantees tailored to the preferences of individual users and their data points, we empirically find it to improve privacy-utility trade-offs.
 
 ## Development Flow
 
@@ -22,15 +26,18 @@ All code dependencies are managed through Poetry.
 To add a new dependency run `poetry add <dep-name>`.
 
 ## Code structure 
-Our main files are located in /idp_sgd/dpsgd_algos/
-While our adaptations to the opacus module can be found in /opacus/
+
+Launching your experiments 
+
+Our main files are located in `/idp_sgd/dpsgd_algos/`.
+While our adaptations to the opacus module can be found in `/opacus/`.
 
 We integrated individualization into our custom opacus module. 
-Most changes can be found in opacus/opacus/optimizers/optimizer.py, where we extended, for example the optimizer to
+Most changes can be found in `opacus/opacus/optimizers/optimizer.py`, where we extended, for example the optimizer to
 operate with per-point individual gradient norms.
 
 The functions that obtain our individualized parameter generation (individual clip norms, sample rates, and noise sclaes)
-are located in opacus/opacus/accountants/utils.py.
+are located in `opacus/opacus/accountants/utils.py`.
 These are called by the privacy engine within `make_private()` and `make_private_with_epsilon()`.
 
 
@@ -57,3 +64,15 @@ python ../idp_sgd/dpsgd_algos/individual_dp_sgd.py \
 ```
 
 individualize flags: {"None", "sampling", "clipping"}
+
+## Citing Us
+If you build on our paper or code base, please cite as follows:
+```
+@article{boenisch2024have,
+  title={Have it your way: Individualized Privacy Assignment for DP-SGD},
+  author={Boenisch, Franziska and M{\"u}hl, Christopher and Dziedzic, Adam and Rinberg, Roy and Papernot, Nicolas},
+  journal={Advances in Neural Information Processing Systems},
+  volume={36},
+  year={2024}
+}
+```
