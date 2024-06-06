@@ -1,6 +1,6 @@
 # Have it your way: Individualized Privacy Assignment for DP-SGD
 
-This is a research library implementing the individualization in DP-SGD.
+This is a research library implementing our paper ["Have it your way: Individualized Privacy Assignment for DP-SGD"](https://proceedings.neurips.cc/paper_files/paper/2023/file/3cbf627fa24fb6cb576e04e689b9428b-Paper-Conference.pdf) (NeurIPS'23).
 
 ## Abstract
 When training a machine learning model with differential privacy, one sets a privacy budget. This uniform budget represents an overall maximal privacy violation that any user is willing to face by contributing their data to the training set. We argue that this approach is limited because different users may have different privacy expectations. Thus, setting a uniform privacy budget across all points may be overly conservative for some users or, conversely, not sufficiently protective for others. In this paper, we capture these preferences through individualized privacy budgets. To demonstrate their practicality, we introduce a variant of Differentially Private Stochastic Gradient Descent (DP-SGD) which supports such individualized budgets. DP-SGD is the canonical approach to training models with differential privacy. We modify its data sampling and gradient noising mechanisms to arrive at our approach, which we call Individualized DP-SGD (IDP-SGD). Because IDP-SGD provides privacy guarantees tailored to the preferences of individual users and their data points, we empirically find it to improve privacy-utility trade-offs.
