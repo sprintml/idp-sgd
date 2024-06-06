@@ -27,7 +27,33 @@ To add a new dependency run `poetry add <dep-name>`.
 
 ## Code structure 
 
-Launching your experiments 
+Launching your experiments can be done from the main file `idp_sgd/dpsgd_algos/individual_dp_sgd.py`.
+
+A possible run configuration for our sampling method on SVHN data could be:
+```
+#!/bin/bash
+
+poetry shell
+conda deactivate
+
+name="sampling_svhn"
+
+XXX %Set the path to your poetry virtual environment's python% ../idp_sgd/dpsgd_algos/individual_dp_sgd.py \
+--save_path "/%Set your results base folder%${name}/" \
+--seeds "42" \
+--dname "SVHN" \
+--architecture "CIFAR10_CNN" \
+--individualize "sampling" \
+--lr 0.2 \
+--epochs 30 \
+--batch_size 1024 \
+--budgets 1.0 2.0 3.0 \
+--ratios 0.34 0.43 0.23 \
+--max_grad_norm 0.9 \
+--accuracy_log "${name}.log" \
+--mode 'run' \
+--assign_budget 'random'
+```
 
 Our main files are located in `/idp_sgd/dpsgd_algos/`.
 While our adaptations to the opacus module can be found in `/opacus/`.
